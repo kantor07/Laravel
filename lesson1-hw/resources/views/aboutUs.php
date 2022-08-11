@@ -7,6 +7,17 @@
     <title>О нас</title>
 </head>
 <body>
+    <ul>
+        <li>
+            <a href="/myNewsSite/public">Главная</a>
+        </li>
+        <li>
+            <a href="/myNewsSite/public/aboutUs">О нас</a>
+        </li>
+        <li>
+            <a href="/myNewsSite/public/topNews">Главные новости</a>
+        </li>
+    </ul>
     <h1>О нас</h1>
 </body>
 </html>
