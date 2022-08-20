@@ -1,0 +1,1 @@
+<x-alert type="danger" message="Это ошибка"></x-alert>
