@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Categories\CreateRequest;
 use App\Http\Requests\Categories\EditeRequest;
 use App\Models\Category;
-use App\Models\News;
+use App\Models\Article;
 use App\Queries\CategoryQueryBuilder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(CategoryQueryBuilder $builder)
-    {  
+    {
         return view('admin.categories.index', [
             'categories' => $builder->getCategory()
         ]);
@@ -92,7 +92,7 @@ class CategoryController extends Controller
      * @return RedirectResponse
      */
     public function update(
-        EditeRequest $request, 
+        EditeRequest $request,
         Category $category,
         CategoryQueryBuilder $builder
         ): RedirectResponse
@@ -103,7 +103,7 @@ class CategoryController extends Controller
         }
         return back()->with('error', __('messages.admin.categories.update.fail'));
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
@@ -113,7 +113,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-       
+
         $category->delete();
            return redirect()->route('admin.categories.index')
             ->with('success', __('messages.admin.categories.destroy.success'));

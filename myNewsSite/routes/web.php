@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\SitePageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\CommentController;
-use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\SourceController as AdminSourceController;
 
@@ -21,25 +21,27 @@ use App\Http\Controllers\Admin\SourceController as AdminSourceController;
 |
 */
 
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
 Route::get('/news', [NewsController::class, 'index'])
-->name('news.index');
+    ->name('news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])
-->where('id', '\d+')
-->name('news.show');
+    ->where('id', '\d+')
+    ->name('news.show');
 
 Route::get('/new/category', [NewsController::class, 'category'])
-->name('sitePage.categoryNewsPage');
+    ->name('sitePage.categoryNewsPage');
 
 
 Route::get('/', [SitePageController::class, 'homePage'])
-->name('sitePage.homePage');
+    ->name('sitePage.homePage');
 
 Route::group([
     'prefix' => 'admin',
     'as'=> 'admin.',
 ], function() {
     Route::get('/', AdminController::class)->name('index');
-    Route::resource('items', AdminNewsController::class);
+    Route::resource('articles', AdminArticleController::class);
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('sources', AdminSourceController::class);
 });

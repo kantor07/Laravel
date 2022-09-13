@@ -1,9 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <h2>Список новостей</h2>
-<a href="{{ route('admin.items.create') }}" 
-        style="float:right;" class="btn btn-primary">
-        Добавить новость
+<a href="{{ route('admin.articles.create') }}" style="float:right;" class="btn btn-primary">
+    Добавить новость
 </a>
 <br>
 <br>
@@ -25,27 +24,29 @@
             </tr>
           </thead>
           <tbody>
-            @forelse($newsList as $news)
+            @forelse($articles as $article)
             <tr>
-              <td>{{ $news->id }}</td>
-              <td>{{ $news->title }}</td>
-              <td>{{ $news->category->title }}</td>
-              <td>{{ $news->source->title }}</td>
-              <td>{{ $news->author }}</td>
-              <td>{{ $news->status }}</td>
-              <td>{{ $news->created_at->format('d-m-Y H:i') }}</td>
+              <td>{{ $article->id }}</td>
+              <td>{{ $article->title }}</td>
+              <td>{{ $article->category->title }}</td>
+              <td>{{ $article->source->title }}</td>
+              <td>{{ $article->author }}</td>
+              <td>{{ $article->status }}</td>
+              <td>{{ $article->created_at->format('d-m-Y H:i') }}</td>
               <td>
-                <a href="{{ route('admin.items.edit', ['item'=> $news]) }}" class="btn btn-linkt btn-sm">Ред.</a> &nbsp; 
-                <a data-id="{{ $news->id }}" href="javascript::" class="delete btn btn-linkt btn-sm" style="color: red"; rel="{{ $news->id }}">Уд.</button> 
+                <a href="{{ route('admin.articles.edit', ['article'=> $article]) }}" class="btn btn-linkt btn-sm">Ред.</a> &nbsp;
+                <a class="delete text-red" style="color: red" data-id="{{ $article->id }}">
+                  Уд.
+                </a>
             </tr>
             @empty
                 <tr>
                     <td colspan="6">Записей не найдено</td>
-                </tr>    
+                </tr>
             @endforelse
           </tbody>
         </table>
-          {{ $newsList->links() }}
+          {{ $articles->links() }}
       </div>
 @endsection
 
@@ -58,7 +59,7 @@
       id = $(this).attr('data-id')
 
       $.ajax({
-        url: `/admin/items/${id}`,
+        url: `/admin/articles/${id}`,
         data: {
           '_token': '{{ csrf_token() }}'
         },

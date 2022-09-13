@@ -3,33 +3,34 @@ declare(strict_types=1);
 
 namespace App\Queries;
 
-use App\Models\News;
+use App\Models\Article;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-final class NewsQueryBuilder
+final class ArticleQueryBuilder
 {
     private Builder $model;
+
     public function __construct()
     {
-        $this->model = News::query();
+        $this->model = Article::query();
     }
 
-    public function getNews(): LengthAwarePaginator
+    public function getArticles(): LengthAwarePaginator
     {
         return $this->model
             ->with('category')
             ->paginate(config('pagination.admin.news'));
     }
 
-    public function create(array $data): News|bool
+    public function create(array $data): Article|bool
     {
-        return News::create($data);
+        return Article::create($data);
     }
 
-    public function update(News $news, array $data): bool
+    public function update(Article $article, array $data): bool
     {
-        return $news->fill($data)->save();
+        return $article->update($data);
     }
 }
