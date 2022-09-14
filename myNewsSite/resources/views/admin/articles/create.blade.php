@@ -3,9 +3,9 @@
     <div class="offset-2 col-8">
         <br>
         <h2>Добавить новость</h2>
-            
+
         @include('inc.message')
-        <form method="post" action="{{ route('admin.items.store') }}">
+        <form method="post" action="{{ route('admin.articles.store') }}">
             @csrf
             <div class="form-group">
                 <lable for="category_id">Выбрать категорию</label>
@@ -14,7 +14,7 @@
                     @foreach($categories as $category)
                     <option value="{{ $category->id }}" @if(old('category_id') === $category->id) selected @endif>{{ $category->title }}</option>
                     @endforeach
-                </select>       
+                </select>
             </div><br>
             <div class="form-group">
                 <lable for="title">Заголовок</label>
@@ -43,12 +43,12 @@
                     @foreach($sources as $source)
                     <option value="{{ $source->id }}" @if(old('source_id') === $source->id) selected @endif>{{ $source->title }}</option>
                     @endforeach
-                </select>       
+                </select>
             </div><br>
             <div class="form-group">
                 <lable for="description">Описание</lable>
                 <textarea class="form-control" id="description" name="description" value="{!! old('description') !!}"></textarea>
-            </div><br>   
+            </div><br>
             <button class="btn btn-success" type="submit">Сохранить</button>
         </form>
     </div>

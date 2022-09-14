@@ -5,7 +5,7 @@
         <h2>Редактировать новость</h2>
 
         @include('inc.message')
-        <form method="post" action="{{ route('admin.news.update', ['news'=> $news]) }}">
+        <form method="post" action="{{ route('admin.items.update', ['news'=> $news]) }}">
             @csrf
             @method('put')
             <div class="form-group">
