@@ -14,7 +14,7 @@ use App\Models\Source;
 
 
 
-class News extends Model
+class Article extends Model
 {
     use HasFactory;
 
@@ -35,8 +35,8 @@ class News extends Model
 
     public function scopeStatus(Builder $query): Builder
     {
-        return $query->where('status', News::DRAFT)
-            ->orWhere('status', News::ACTIVE);
+        return $query->where('status', Article::DRAFT)
+            ->orWhere('status', Article::ACTIVE);
     }
 
     //Relations
@@ -50,5 +50,5 @@ class News extends Model
     {
         return $this->belongsTo(Source::class, 'source_id', 'id');
     }
-    
+
 }

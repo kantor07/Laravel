@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\SourceController as AdminSourceController;
 |
 */
 
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])

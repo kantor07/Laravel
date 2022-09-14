@@ -115,6 +115,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category): JsonResponse
     {
+<<<<<<< HEAD
         try {
             if (!$category->delete()) {
                 return response()->json('error', 400);
@@ -126,5 +127,11 @@ class CategoryController extends Controller
             Log::error($e->getMessage());
             return response()->json('error', 400);
         }
+=======
+
+        $category->delete();
+           return redirect()->route('admin.categories.index')
+            ->with('success', __('messages.admin.categories.destroy.success'));
+>>>>>>> lesson7-hw
     }
 }
