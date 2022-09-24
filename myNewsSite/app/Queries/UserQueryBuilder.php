@@ -34,6 +34,7 @@ final class UserQueryBuilder
 
     public function update(User $user, array $data): bool
     {  
+       // dd($data);
         return $user->fill([
             'name'  => $data['name'],
             'email' =>  $data['email'],

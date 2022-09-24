@@ -22,8 +22,8 @@
             <div class="form-group">
                 <lable for="is_admin">Статус</label>
                     <select class="form-control" name="is_admin">
-                        <option @if(old('is_admin') === 1) selected @endif>Администратор</option>
-                         <option @if(old('is_admin') === 0) selected @endif>Пользователь</option>
+                        <option @if(old('is_admin') === 1) selected @endif value= "1">Администратор</option>
+                         <option @if(old('is_admin') === 0) selected @endif value= "0">Пользователь</option>
                     </select>
             </div><br>    
             <button class="btn btn-success" type="submit">Сохранить</button>

@@ -100,9 +100,9 @@ class UserController extends Controller
         UserQueryBuilder $builder
         ): RedirectResponse
     {        
-        if($builder->update($user, $request->validated())){
-        return redirect()->route('admin.users.index')
-            ->with('success', __('messages.admin.users.update.success'));
+        if ($builder->update($user, $request->validated())) {
+            return redirect()->route('admin.users.index')
+                ->with('success', __('messages.admin.users.update.success'));
         }
         return back()->with('error', __('messages.admin.users.update.fail'));
       }

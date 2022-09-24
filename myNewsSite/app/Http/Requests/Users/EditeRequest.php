@@ -27,6 +27,7 @@ class EditeRequest extends FormRequest
             'name' => ['required', 'string', 'min:3', 'max:100'],
             'email'   => ['required', 'email'],
             'password'   => ['required', 'min:8'],
+            'is_admin' => [],
         ];
     }
 

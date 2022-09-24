@@ -23,8 +23,8 @@
             <div class="form-group">
                 <lable for="is_admin">Статус</label>
                     <select class="form-control" name="is_admin">
-                        <option @if($user->is_admin === 1) selected @endif>Администратор</option>
-                        <option @if($user->is_admin === 0) selected @endif>Пользователь</option>
+                        <option value="1" @if($user->is_admin === 1) selected  @endif>Администратор</option>
+                        <option value="0" @if($user->is_admin === 0) selected @endif>Пользователь</option>
                     </select>
             </div><br> 
               

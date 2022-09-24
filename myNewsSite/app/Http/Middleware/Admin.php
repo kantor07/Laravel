@@ -18,7 +18,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        if($user->is_admin === false) {
+        if (!Auth::user()->is_admin) {
             \abort(404);
         }
         return $next($request);
