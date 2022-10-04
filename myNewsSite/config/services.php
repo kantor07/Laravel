@@ -35,7 +35,13 @@ return [
         'client_id' => env('VKONTAKTE_CLIENT_ID'),  
         'client_secret' => env('VKONTAKTE_CLIENT_SECRET'),  
         'redirect' => env('VKONTAKTE_REDIRECT_URI') 
-      ],
+    ],
+
+    'github' => [    
+        'client_id' => env('GITHUB_CLIENT_ID'),  
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),  
+        'redirect' => env('GITHUB_REDIRECT_URI') 
+    ],
       
 
 ];
